@@ -2,8 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-# # импорты из моих модулей
-# from db.gofroeuropack_db import checkProd, addNewProd
+# импорты из моих модулей
+from db.mos_gk_db import checkProd, addNewProd
 
 def mos_gk_main_parse(url):
     response = requests.get(url=url)
