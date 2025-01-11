@@ -23,7 +23,7 @@ def checkProd (url):
         connection.close()
 
 ############# добавление нового продукта ################
-def addNewProd(url, breadcrumbs_list, product_title, name_separation_1, name_separation_2):
+def addNewProd(url, breadcrumbs_list, product_title, name_separation_1, name_separation_2, length, width, height, mark, profile, color, normal_price):
     # Получить соединение с базой данных
     connection = get_database_connection()
 
@@ -33,17 +33,17 @@ def addNewProd(url, breadcrumbs_list, product_title, name_separation_1, name_sep
             # Проверка длины breadcrumbs_list
             if len(breadcrumbs_list) == 2:
                 print("Попадаем в условие для длины 2")  # Отладочный вывод
-                sql = "INSERT INTO `mos_gk` (`url`, `level_1`, `level_2`, `title_h1`, `name_separation_1`, `name_separation_2`) VALUES (%s, %s, %s, %s, %s, %s)"
-                values = (url, breadcrumbs_list[0], breadcrumbs_list[1], product_title, name_separation_1, name_separation_2)
+                sql = "INSERT INTO `mos_gk` (`url`, `level_1`, `level_2`, `title_h1`, `name_separation_1`, `name_separation_2`, `length`, `width`, `height`, `mark`, `profile`, `color`, `normal_price`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                values = (url, breadcrumbs_list[0], breadcrumbs_list[1], product_title, name_separation_1, name_separation_2, length, width, height, mark, profile, color, normal_price)
             elif len(breadcrumbs_list) == 3:
-                sql = "INSERT INTO `mos_gk` (`url`, `level_1`, `level_2`, `level_3`, `title_h1`, `name_separation_1`, `name_separation_2`) VALUES (%s, %s, %s, %s, %s, %s)"
-                values = (url, breadcrumbs_list[0], breadcrumbs_list[1], breadcrumbs_list[2], product_title, name_separation_1, name_separation_2)
+                sql = "INSERT INTO `mos_gk` (`url`, `level_1`, `level_2`, `level_3`, `title_h1`, `name_separation_1`, `name_separation_2`, `length`, `width`, `height`, `mark`, `profile`, `color`, `normal_price`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                values = (url, breadcrumbs_list[0], breadcrumbs_list[1], breadcrumbs_list[2], product_title, name_separation_1, name_separation_2, length, width, height, mark, profile, color, normal_price)
             elif len(breadcrumbs_list) == 4:
-                sql = "INSERT INTO `mos_gk` (`url`, `level_1`, `level_2`, `level_3`, `level_4`, `title_h1`, `name_separation_1`, `name_separation_2`) VALUES (%s, %s, %s, %s, %s, %s)"
-                values = (url, breadcrumbs_list[0], breadcrumbs_list[1], breadcrumbs_list[2], breadcrumbs_list[3], product_title, name_separation_1, name_separation_2)
+                sql = "INSERT INTO `mos_gk` (`url`, `level_1`, `level_2`, `level_3`, `level_4`, `title_h1`, `name_separation_1`, `name_separation_2`, `length`, `width`, `height`, `mark`, `profile`, `color`, `normal_price`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                values = (url, breadcrumbs_list[0], breadcrumbs_list[1], breadcrumbs_list[2], breadcrumbs_list[3], product_title, name_separation_1, name_separation_2, length, width, height, mark, profile, color, normal_price)
             elif len(breadcrumbs_list) == 5:
-                sql = "INSERT INTO `mos_gk` (`url`, `level_1`, `level_2`, `level_3`, `level_4`, `level_5`, `title_h1`, `name_separation_1`, `name_separation_2`) VALUES (%s, %s, %s, %s, %s, %s)"
-                values = (url, breadcrumbs_list[0], breadcrumbs_list[1], breadcrumbs_list[2], breadcrumbs_list[3], breadcrumbs_list[4], product_title, name_separation_1, name_separation_2)
+                sql = "INSERT INTO `mos_gk` (`url`, `level_1`, `level_2`, `level_3`, `level_4`, `level_5`, `title_h1`, `name_separation_1`, `name_separation_2`, `length`, `width`, `height`, `mark`, `profile`, `color`, `normal_price`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+                values = (url, breadcrumbs_list[0], breadcrumbs_list[1], breadcrumbs_list[2], breadcrumbs_list[3], breadcrumbs_list[4], product_title, name_separation_1, name_separation_2, length, width, height, mark, profile, color, normal_price)
             else:
                 raise ValueError("breadcrumbs_list должен содержать от 2 до 5 элементов")
             res = cursor.execute(sql, values)
